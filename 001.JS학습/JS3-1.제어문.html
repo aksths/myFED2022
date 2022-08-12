@@ -22,59 +22,86 @@
 
             // 2-2. 입력된 값 읽어오기
             var score = jumsu.value;
-            // value는 텍스트 입력창의 값을 읽어오는 속성
+            // value는 텍스트입력창의 값을 읽어오는 속성
             console.log("입력값:",score);
-
+            
             // 2-3. 출력대상: #jexp
             var jexp = document.querySelector("#jexp");
 
             // 2-4. 칭찬스티커: #jshow
             var jshow = document.querySelector("#jshow");
 
-            ////////////////////////////////////////
-            /// 2.5-1. 숫자여부 판결하기 ////////////
-            ///////////////////////////////////////
+            /// 숫자여부 판별 및 숫자범위판별의
+            // 공통 코드 함수로 만들기!
+            var comFn = function(){
+
+                // 2. 글자색 초기화
+                jexp.style.color = "#000";
+
+                // 3. 칭찬스티커 위치 초기화
+                jshow.style.backgroundPosition = "322px 0";
+
+                // 4. 입력창 내용지우기
+                jumsu.value = ""; // 빈문자넣어 지우기
+
+                // 5. 입력창에 포커스 주기(버튼을 클릭한 경우)
+                jumsu.focus();
+                // focus() 는 입력창에 커서를 보내는 JS내장함수
+
+            }; //////// comFn함수 ///////
+
+            // 이름없는 함수function(){}를 변수에
+            // 할당하는 순간 그 변수는 함수가 된다!
+
+            /////////////////////////////////
+            /// 2.5-1. 숫자여부 판별하기 /////
+            ////////////////////////////////
             // 숫자판별 내장함수 사용 -> isNaN(값)
             // is Not a Number? 숫자가 아니니?
             // 결과: 숫자가 아니면 true / 숫자면 false
-            console.log("숫자가 아니니?",isNaN(score));
+            console.log("숫자가 아니니? ",isNaN(score));
 
             if(isNaN(score)){ // 숫자가 아니면 들어감!
                 // 1. 메시지 출력하기
                 jexp.innerText = "숫자만 입력해 주세요!";
                 console.log("여기들어옴!");
 
-                // 2. 글자색 초기화
-                jexp.style.color = "#000";
-
-                // 3. 칭찬스티커 위치 초기화
-                jshow.style.backgroundPosition ="322px 0";
-
-                // 4. 입력창 내용지우기
-                jumsu.value =""; // 빈문자 넣어 지우기
-
-                // 5. 입력창에 포커스 주기(버튼을 클릭한 경우)
-                jumsu.focus();
-                // focus() 는 입력창에 커서를 보내는 JS 내장함수
+                // 2. 각종 초기화기능 함수 호출
+                comFn();
 
 
                 // 이 if문에 들어온 경우
                 // 여기서 함수를 나가게 하려면?
-                // return 키워드 사용!!
+                // return 키워드 사용!!!
                 return;
-                // 함수를 나갈 때 return!!
-            } ////////// if ////////////
+                // 함수를 나갈땐 return!!!
+            } /////////// if ////////////////
 
+            /////////////////////////////////
+            /// 2.5-2. 숫자범위 판별하기 /////
+            ////////////////////////////////
+            // 입력값의 범위 아닌것은 0미만 100초과
+            else if(score < 0 || score > 100){
+                
+                // 1. 메시지 찍기
+                jexp.innerText = '0이상 100이하의 숫자만 입력하세요!';
 
-            ////////////////
-            /// 3. 점수 환산하기 ////
+                // 2. 각종 초기화기능 함수 호출
+                comFn();
+
+                // 여기에 들어오면 여기서 
+                // 함수를 나가라! -> return
+                return;
+            } /////////// else if ////////////
+
+            ///////////////////////
+            /// 3. 점수환산하기 /////
             // 메시지 변수
             var msg;
             // 글자색 변수
             var fc;
-            // 배경 위치 변수
+            // 배경위치 변수
             var bgp;
-
 
             if(score >= 90){
                 msg = "매우잘함";
@@ -82,47 +109,48 @@
                 bgp = "0 0";
             }
             else if(score >= 80){
-                msg ="잘함";
+                msg = "잘함";
                 fc = "green";
                 bgp = "-322px 0";
             }
             else if(score >= 70){
-                msg ="보통";
+                msg = "보통";
                 fc = "purple";
                 bgp = "-322px -322px";
             }
             else if(score >= 60){
-                msg ="노력요함";
-                fc="orange";
+                msg = "노력요함";
+                fc = "orange";
                 bgp = "0 -644px";
             }
             else{
-                msg ="재시험";
+                msg = "재시험";
                 fc = "red";
                 bgp = "-644px -644px";
             }
 
             // 할당된 변수값 확인
-            console.log("msg:",msg, "/fc:",fc, "/bgp:",bgp);
+            console.log("msg:",msg,"/fc:",fc,"/bgp:",bgp);
 
-            // 4. 출력하기 ////
+            // 4. 출력하기 //////
             jexp.innerText = "평가결과는 " + msg;
-            // innerText는 선택요소에 글자출력
+            // innerText 는 선택요소에 글자출력
 
-            // 5. 글자색바꾸기
+            // 5. 글자색 바꾸기
             jexp.style.color = fc;
 
             // 6. 칭찬스티커 보이기
             jshow.style.backgroundPosition = bgp;
 
 
-            // if문을 모두 따로쓸 경우
+            // if문을 모두 따로 쓸 경우
             // 범위지정을 모두 해야함!
             // if(score < 90 && score >= 80){}
+            
 
 
-        } ////////// jumsu 함수 ////////////////
-        ///////////////////////////////////////
+        } ///////////// jumsu 함수 /////////////////
+        ////////////////////////////////////////////
 
         /********************************************** 
             [ if문 ]
@@ -176,6 +204,19 @@
             함수명: local
             기능: 지역명을 입력하면 지역국번을 안내한다!
         *************************************************/
+       function local(){
+
+            // 1. 호출확인
+            console.log('국번안내');
+
+            // 2-1. 대상선정: 읽어올대상 - input#local
+            let tg = document.querySelector("#local");
+
+            // 2-2. 입력된 값 읽어오기
+            let txt = tg.value;
+            console.log('지역명',txt);
+
+       } ///////////////////// local 함수 ////////////////////
         
 
         /************************************************ 
@@ -376,8 +417,8 @@
     <h2>switch case문 연습</h2>
     <h3 id="info">국번안내</h3>
     <label for="local">지역명 입력:</label>
-    <input type="text" id="local" placeholder="지역명을 '도'를 빼고 쓰세요!" maxlength="10">
-    <button class="sbtn">국번문의</button>
+    <input type="text" id="local" placeholder="지역명을 '도'를 빼고 쓰세요!" maxlength="10" onkeypress="if(event.keyCode === 13) local()">
+    <button class="sbtn" onclick="local()">국번문의</button>
 
     <br /><br />
     <hr />
