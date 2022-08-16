@@ -203,20 +203,20 @@
         function local() {
 
             // 1. 호출확인
-            console.log('국번안내');
+            console.log("국번안내");
 
             // 2-1. 대상선정: 읽어올대상 - input#local
             let tg = document.querySelector("#local");
 
             // 2-2. 입력된 값 읽어오기
             let txt = tg.value;
-            console.log('지역명', txt);
+            console.log('지역명:', txt);
 
             // 2-3. 대상선정: 출력대상 - #info
             let info = document.querySelector("#info");
 
             // 메시지 변수
-            let msg; // 선언만 하고 할당은 switch문에서함!
+            let msg; // 선언만하고 할당은 switch문에서함!
 
             // 3. 지역명에 따라 분류하여 메시지 넣기
             switch (txt) {
@@ -232,27 +232,66 @@
                 case "부산":
                     msg = "051";
                     break;
+                case "대구":
+                    msg = "053";
+                    break;
+                case "광주":
+                    msg = "062";
+                    break;
+                case "전북":
+                    msg = "063";
+                    break;
+                case "전남":
+                    msg = "061";
+                    break;
+                case "경북":
+                    msg = "054";
+                    break;
+                case "경남":
+                    msg = "055";
+                    break;
+                case "세종":
+                    msg = "044";
+                    break;
+                case "울산":
+                    msg = "052";
+                    break;
+                case "대전":
+                    msg = "042";
+                    break;
+                case "충북":
+                    msg = "043";
+                    break;
+                case "충남":
+                    msg = "041";
+                    break;
+                case "제주":
+                    msg = "064";
+                    break;
+                case "나성":
+                    msg = "나성에 가면 편지를 전해줘요~";
+                    break;
                 default:
                     msg = "esc";
-            } /////////// switch case문 ////////////
+            } /////////// switch case문 ///////////
 
-            console.log('메시지', msg);
+            console.log("메시지", msg);
 
-            // 4. 메시지 만들기    
+            // 4. 메시지 만들기
             // msg 변수에 최종 출력내용을 다시 담아서 변경함
             if (msg === "esc") {
                 msg = "등록되지 않은 지역입니다!";
-            } /////////// if ///////////
+            } //////// if //////////
             else {
                 msg = `${txt}의 지역번호는 ${msg}입니다!`;
-            } /////////// else /////////////
+            } //////// else ////////
 
             // 5. 화면출력
             // 출력대상: #info -> info변수
             info.innerText = msg;
 
 
-        } ///////////////////// local 함수 ////////////////////
+        } ////////////////// local 함수 ////////////////////
 
 
         /************************************************ 
@@ -296,7 +335,8 @@
                       변경될때 발생하는 이벤트
                       -> onchange 이벤트속성을 사용함!
           *************************************************/
-          function gugu(U) { // U - 전달변수(select자신)
+        function gugu(U) { // U - 전달변수(select자신)
+
             // 0. 전달된 선택값 읽기
             let opt = U.value;
 
@@ -312,20 +352,18 @@
 
             for (let i = 1; i < 10; i++) {
 
-
                 code += `${opt} × ${i} ＝ ${opt*i} <br>`;
                 // += 대입연산자(기존값에 계속 더함)
 
-            } ///////////// for ///////////////
+            } ////////// for ////////////
 
 
-
-            // console.log('코드:',code);
+            // console.log("코드:",code);
 
             // 4. 화면출력
             gugu.innerHTML = code;
 
-        } //////////// gugu함수 /////////////
+        } //////////////// gugu함수 ///////////////////
 
         /*************************************************** 
                [ for문 ]
@@ -357,14 +395,53 @@
 
         /************************************************* 
               함수명: gugu2
-              기능: 선택박스에서 선택된 구구단을 출력함(for문사용!)
+              기능: 선택박스에서 선택된 구구단을 출력함(while문사용!)
               연결이벤트: change
                       -> 선택박스(select)의 option선택이
                       변경될때 발생하는 이벤트
                       -> onchange 이벤트속성을 사용함!
           *************************************************/
+        function gugu2(U) { // U - 전달변수(select자신)
+
+            // 0. 전달된 선택값 읽기
+            let opt = U.value;
+
+            // 1. 함수호출확인
+            console.log('구구단을 외자!', opt);
+
+            // 2. 대상선정 : 출력대상 .g2
+            let gugu = document.querySelector('.g2');
+
+            // 3. 구구단 만들기
+            // 구구단 코드담을 변수
+            let code = `<h2>${opt}단</h2>`;
+
+            // while문 사용!!! //////////////
+            // 시작값
+            let i = 1;
+
+            while(i < 10){ // () 소괄호안이 한계값!
+
+                code += `${opt} × ${i} ＝ ${opt*i} <br>`;
+
+                //증감!(안쓰면 무한루프!)
+                i++;
+            } /////////// while문 //////////////
+
+            // for (let i = 1; i < 10; i++) {
+
+            //     code += `${opt} × ${i} ＝ ${opt*i} <br>`;
+            //     // += 대입연산자(기존값에 계속 더함)
+
+            // } ////////// for ////////////
 
 
+            // console.log("코드:",code);
+
+            // 4. 화면출력
+            gugu.innerHTML = code;
+
+        } /////////////////// gugu2함수 //////////////
 
         /**************************************************** 
               [ while문 ]
@@ -398,48 +475,6 @@
               -> 예) 중복숫자 피하기, 직전값 피하기 등
 
         ****************************************************/
-       
-        function gugu2(U) { // U - 전달변수(select자신)
-            // 0. 전달된 선택값 읽기
-            let opt = U.value;
-
-            // 1. 함수호출확인
-            console.log('구구단을 외자!', opt);
-
-            // 2. 대상선정 : 출력대상 .g2
-            let gugu = document.querySelector('.g2');
-
-            // 3. 구구단 만들기
-            // 구구단 코드담을 변수
-            let code = `<h2>${opt}단</h2>`;
-
-
-            // while 문 사용!!
-            // 시작값
-            let i = 1;
-
-            while (i < 10) { // () 소괄호안이 한계값!
-                code += `${opt} × ${i} ＝ ${opt*i} <br>`;
-                // 증감!
-                i++;
-            } ///////////// while문 /////////////////
-
-            // for (let i = 1; i < 10; i++) {
-
-
-            //     code += `${opt} × ${i} ＝ ${opt*i} <br>`;
-            //     // += 대입연산자(기존값에 계속 더함)
-
-            // } ///////////// for ///////////////
-
-
-
-            // console.log('코드:',code);
-
-            // 4. 화면출력
-            gugu.innerHTML = code;
-
-        }
     </script>
     <style>
         /* 칭찬스티커 */

@@ -98,13 +98,20 @@
 
             // 2. 버튼별 이미지 분기하기
             // switch case로 분기하기!
-            switch(btxt){
-                case "포스터" : isrc = './images/ala1.jpg'; break;
-                case "장면1" : isrc = './images/ala3.jpg'; break;
-                case "장면2" : isrc = './images/ala2.jpg'; break;
-                case "장면3" : isrc = './images/ala4.jpg'; break;
-            } //////////////// switch case /////////////
-
+            switch (btxt) {
+                case "포스터":
+                    isrc = './images/ala1.jpg';
+                    break;
+                case "장면1":
+                    isrc = './images/ala3.jpg';
+                    break;
+                case "장면2":
+                    isrc = './images/ala2.jpg';
+                    break;
+                case "장면3":
+                    isrc = './images/ala4.jpg';
+                    break;
+            } //////////// switch case //////////
 
 
 
@@ -143,32 +150,6 @@
         <button class="btns">장면2</button>
         <button class="btns">장면3</button>
     </div>
-    <!-- 
-함수호출시 this란?
-this 키워드는 클릭이벤트가 발생한 요소 자신을 말한다!
-함수에서 이것을 받은 후 내부 속성값이나 데이터를 읽어갈 수 있다!
-
--->
-
-    </script>
-    </head>
-
-    <body>
-        <!-- 전체 타이틀 -->
-        <h1 class="tit">All New Aladin</h1>
-
-        <!-- 스틸컷장면박스 -->
-        <div class="photo">
-            <img id="scene" src="./images/ala1.jpg" alt="알라딘스틸컷">
-        </div>
-
-        <!-- 선택버튼박스 -->
-        <div class="btnbx">
-            <button class="btns">포스터</button>
-            <button class="btns">장면1</button>
-            <button class="btns">장면2</button>
-            <button class="btns">장면3</button>
-        </div>
-    </body>
+</body>
 
 </html>
