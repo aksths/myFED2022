@@ -369,18 +369,17 @@
                 셋팅하시오!(변수명을 자신이 지어본다!)
             ***********************************************/
 
-            // 예시코드
 
             // 변수명을 자신이 지어본다
-            const myMv = {
+            const ijj = {
                 // 1. 영화제목
-                title: "더 배트맨",
+                title: "헌트",
                 // 2. 감독
-                director: "맷 리브스",
+                director: "이정재",
                 // 3. 배우
-                actors: "로버트 패틴슨, 폴 다노",
+                actors: "이정재, 정우성, 전혜진",
                 // 4. 장르
-                genre:"액션, 범죄, 드라마",
+                genre:"액션",
                 // 5. 관람가
                 ratings:"15세 관람가",
                 // 6. 예고편(메서드)
@@ -395,7 +394,7 @@
                    mvbx.innerHTML = `
                         <div id="mv">
                             <!--유튜브 아이프레임-->
-                            <iframe width="100%" height="100%" src="https://www.youtube.com/embed/CKOjENn2MVI?autoplay=1" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                            <iframe width="100%" height="100%" src="https://www.youtube.com/embed/CSOb8gia_mg" title="[헌트] 공식 예고편" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
 
                             <!--닫기버튼-->
                             <span class="cbtn">×</span>
@@ -420,7 +419,7 @@
                    cbtn.style.right = "-70px";
                    cbtn.style.width = "50px"
                    cbtn.style.height = "50px";
-                   cbtn.style.backgroundColor = "blue";
+                   cbtn.style.backgroundColor = "purple";
                    cbtn.style.textAlign = "center";
                    cbtn.style.fontSize = "40px";
                    cbtn.style.fontWeight = "bold";
@@ -437,7 +436,7 @@
                    // remove() 메서드는 선택요소를 제거함!
 
                 } ///// trailer 메서드 ///
-            }; ////////// myMv객체 ////////////
+            }; ////////// ijj객체 ////////////
 
             // 출력대상: #txt6
             let txt6 = document.querySelector("#txt6");
@@ -448,25 +447,25 @@
             // 출력
             txt6.innerHTML = 
             `
-                ♣️ 영화명 : ${myMv.title}
-                ♣️ 감독 : ${myMv.director} 
-                ♣️ 배우 : ${myMv.actors} <br>
-                ♣️ 장르 : ${myMv.genre}
-                ♣️ 등급 : ${myMv.ratings}
+                ◎ 영화명 : ${ijj.title}
+                ◎ 감독 : ${ijj.director} 
+                ◎ 배우 : ${ijj.actors} <br>
+                ◎ 장르 : ${ijj.genre}
+                ◎ 등급 : ${ijj.ratings}
 
             `;
 
 
             // 툴팁보이기
             txt6.title = 
-            `클릭하시면 ${myMv.title}예고편을 보실 수 있습니다!`;
+            `클릭하시면 ${ijj.title}예고편을 보실 수 있습니다!`;
 
             // 손가락표시
             txt6.style.cursor = "pointer";
 
             // 트레일러 메서드 호출하기
             // #txt6클릭시
-            txt6.onclick = myMv.trailer;
+            txt6.onclick = ijj.trailer;
 
 
 
