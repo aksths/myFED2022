@@ -486,12 +486,36 @@ $(() => { ////////////////// jQB //////////////////////
                         // 최종애니!!!
                         // 힌트: addClass(클래스명)
                         // 시간차이는 setTimeout()사용
-                        // 간판 떨어지기
-                        // 건물 무너지기
 
-                    })
+                        // 8. 간판 떨어지기
+                        // 대상: .tit
+                        let tit = $('.tit');
 
-                }) //////////// fadeIn /////////////////
+                        // 1단계: 간판 중간 떨어짐(.on)
+                        tit.addClass('on');
+
+                        // 2단계: 3초후 간판 떨어짐(.on2)
+                        setTimeout(()=>{
+                            tit.addClass('on2');
+
+                            // 9. 건물 무너지기
+                            // 대상: .building
+                            // bd변수를 이용해보자
+                            // bd변수 -> .building li
+                            // 한단계 위인 부모로 올라감
+                            // parent() -> 부모로 올라감
+                            bd.parent().addClass('on');
+                            
+                            // 비교) 부모로 올라가기 -> parentNode
+                            // document.getElementById().parentNode
+
+                        },3000); //////////// 타임아웃 /////////////
+
+                        
+
+                    }); /////////////// animate ///////////////
+
+                }); //////////// fadeIn /////////////////
 
                 // 다음 버튼 보이기
                 $(e.currentTarget).next().slideDown(400);
