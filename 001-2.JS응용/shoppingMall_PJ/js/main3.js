@@ -166,7 +166,7 @@ function loadFn() {
         autoT = setTimeout(autoCall, 4000);
         // 4초후 autoCall()함수 호출!
 
-    }; ////// clearAuto함수 ///////////    
+    }; ////// clearAuto함수 ///////////
 
 
 } /////////////// loadFn 함수 //////////////
